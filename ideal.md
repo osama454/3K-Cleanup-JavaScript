@@ -31,20 +31,20 @@ const gridSize = 4; // Number of rows and columns in the puzzle
 
 // Function to initialize the module, which can be called after DOM is set up
 function initializeModule() {
-  imageUpload = document.getElementById('imageUpload');
-  puzzleCanvas = document.getElementById('puzzleCanvas');
-  ctx = puzzleCanvas?.getContext('2d');
-  puzzleContainer = document.getElementById('puzzleContainer');
+  imageUpload = document.getElementById("imageUpload");
+  puzzleCanvas = document.getElementById("puzzleCanvas");
+  ctx = puzzleCanvas?.getContext("2d");
+  puzzleContainer = document.getElementById("puzzleContainer");
 
   if (imageUpload) {
-    imageUpload.addEventListener('change', handleImageUpload);
+    imageUpload.addEventListener("change", handleImageUpload);
   }
 
   // Drag and Drop Functionality
   let draggingPiece = null;
 
   if (puzzleCanvas) {
-    puzzleCanvas.addEventListener('mousedown', (e) => {
+    puzzleCanvas.addEventListener("mousedown", (e) => {
       const mouseX = e.offsetX;
       const mouseY = e.offsetY;
 
@@ -65,7 +65,7 @@ function initializeModule() {
       }
     });
 
-    puzzleCanvas.addEventListener('mousemove', (e) => {
+    puzzleCanvas.addEventListener("mousemove", (e) => {
       if (draggingPiece) {
         draggingPiece.x = e.offsetX - draggingPiece.width / 2;
         draggingPiece.y = e.offsetY - draggingPiece.height / 2;
@@ -73,7 +73,7 @@ function initializeModule() {
       }
     });
 
-    puzzleCanvas.addEventListener('mouseup', () => {
+    puzzleCanvas.addEventListener("mouseup", () => {
       draggingPiece = null;
     });
   }
@@ -82,11 +82,11 @@ function initializeModule() {
 // Function to get the dominant color from an image
 function getDominantColor(img) {
   if (!img || !img.width || !img.height) {
-    return 'rgb(128,128,128)'; // Default color if image data is invalid
+    return "rgb(128,128,128)"; // Default color if image data is invalid
   }
 
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
   canvas.width = img.width;
   canvas.height = img.height;
   context.drawImage(img, 0, 0);
@@ -101,12 +101,12 @@ function getDominantColor(img) {
       imageData[i + 2],
       imageData[i + 3],
     ];
-    const colorKey = rgba.join(',');
+    const colorKey = rgba.join(",");
     colorCounts[colorKey] = (colorCounts[colorKey] || 0) + 1;
   }
 
   const sortedColors = Object.entries(colorCounts).sort((a, b) => b[1] - a[1]);
-  const dominantColor = sortedColors[0][0].split(',').map(Number);
+  const dominantColor = sortedColors[0][0].split(",").map(Number);
 
   return `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`;
 }
@@ -182,29 +182,30 @@ function handleImageUpload(e) {
 }
 
 // Check if we're in a browser environment
-if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+if (typeof window !== "undefined" && typeof document !== "undefined") {
   // If document is already loaded, initialize immediately
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeModule);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeModule);
   } else {
     initializeModule();
   }
 }
 
 // Export functions for testing
-module.exports = {
-  createPuzzlePieces,
-  handleImageUpload,
-  getDominantColor,
-  drawPuzzle,
-  initializeModule,
-  getPuzzlePieces: () => puzzlePieces,
-  getGridSize: () => gridSize,
-};
+if (typeof module !== "undefined" && module.exports)
+  module.exports = {
+    createPuzzlePieces,
+    handleImageUpload,
+    getDominantColor,
+    drawPuzzle,
+    initializeModule,
+    getPuzzlePieces: () => puzzlePieces,
+    getGridSize: () => gridSize,
+  };
 
 ```
 
-3. `style.css`
+3. `styles.css`
 ```css
 #puzzleContainer {
   position: relative; /* To position puzzle pieces */
