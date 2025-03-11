@@ -1,5 +1,4 @@
 1. `index.html`
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -64,11 +63,11 @@
     <script src="script.js"></script>
   </body>
 </html>
+
 ```
 
 2. `script.js`
-
-```javascript
+```js
 // Constants for dice faces mapping - [Top, Bottom, Right, Left, Front, Back]
 const DICE_FACE_MAP = [1, 6, 2, 5, 3, 4];
 
@@ -207,6 +206,31 @@ function isDiceStable() {
 
 // Initialize the game
 function initGame() {
+  // Roll dice function
+  document.getElementById("rollButton").addEventListener("click", () => {
+    // Reset display
+    document.getElementById("result").innerHTML = "Rolling...";
+
+    // Set initial position above the center
+    diceBody.position.set(0, 5, 0);
+    diceBody.velocity.set(
+      Math.random() * 5 - 2.5,
+      Math.random() * 2 + 1,
+      Math.random() * 5 - 2.5
+    );
+
+    // Set random angular velocity for spinning
+    diceBody.angularVelocity.set(
+      Math.random() * 20 - 10,
+      Math.random() * 20 - 10,
+      Math.random() * 20 - 10
+    );
+
+    // Reset stabilization detection
+    isRolling = true;
+    rollingTimeLeft = 3; // seconds to wait before checking result
+  });
+
   // Scene setup
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x222222);
@@ -316,31 +340,6 @@ function initGame() {
   diceBody.linearDamping = 0.3;
   world.addBody(diceBody);
 
-  // Roll dice function
-  document.getElementById("rollButton").addEventListener("click", () => {
-    // Set initial position above the center
-    diceBody.position.set(0, 5, 0);
-    diceBody.velocity.set(
-      Math.random() * 5 - 2.5,
-      Math.random() * 2 + 1,
-      Math.random() * 5 - 2.5
-    );
-
-    // Set random angular velocity for spinning
-    diceBody.angularVelocity.set(
-      Math.random() * 20 - 10,
-      Math.random() * 20 - 10,
-      Math.random() * 20 - 10
-    );
-
-    // Reset stabilization detection
-    isRolling = true;
-    rollingTimeLeft = 3; // seconds to wait before checking result
-
-    // Reset display
-    document.getElementById("result").textContent = "Rolling...";
-  });
-
   // Animation loop
   const clock = new THREE.Clock();
   let previousTime = 0;
@@ -394,14 +393,5 @@ function initGame() {
 // Start the game when page loads
 window.addEventListener("DOMContentLoaded", initGame);
 
-// Export functions for testing
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    createDiceTextures,
-    getDiceValue,
-    isDiceStable,
-    drawCircle,
-    DICE_FACE_MAP,
-  };
-}
 ```
+

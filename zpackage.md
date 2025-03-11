@@ -1,0 +1,17 @@
+```json
+{
+  "scripts": {
+    "start": "servor --reload",
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "cannon": "^0.6.2",
+    "canvas": "^3.1.0",
+    "jest": "^29.7.0",
+    "jsdom": "^26.0.0",
+    "servor": "^4.0.2"
+  }
+}
+
+```
