@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Collection</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  </head>
+  <body>
+    <h1>Manage Your Book Collection</h1>
+    <form id="add-book-form">
+      <input type="text" id="title" placeholder="Book Title" required />
+      <input type="text" id="author" placeholder="Author" required />
+      <input type="text" id="publication-date" placeholder="Publication Date" />
+      <button type="submit">Add Book</button>
+    </form>
+
+    <h2>Book List</h2>
+    <ul id="book-list"></ul>
+
+    <h2>Search Books</h2>
+    <input
+      type="text"
+      id="search-query"
+      placeholder="Search by title or author"
+    />
+    <button
+      onclick="searchBooks(document.getElementById('search-query').value)"
+    >
+      Search
+    </button>
+
+    <h2>Sort Books</h2>
+    <button onclick="sortBooks('title')">Sort by Title</button>
+    <button onclick="sortBooks('author')">Sort by Author</button>
+    <button onclick="sortBooks('publicationDate')">
+      Sort by Publication Date
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
