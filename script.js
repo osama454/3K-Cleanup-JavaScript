@@ -1,74 +1,3 @@
-1. `index.html`
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>3D Dice Game</title>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        background-color: #333;
-        font-family: Arial, sans-serif;
-      }
-      canvas {
-        display: block;
-      }
-      #result {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        color: white;
-        font-size: 32px;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      }
-      #rollButton {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      #rollButton:hover {
-        background-color: #3e8e41;
-      }
-      #debugInfo {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        color: white;
-        font-size: 14px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="result">Roll the dice!</div>
-    <button id="rollButton">Roll Dice</button>
-    <div id="debugInfo"></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-      // Since cannon-es loading wasn't working correctly, we'll use cannon.js instead
-      window.CANNON = { REVISION: "3" };
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cannon.js/0.6.2/cannon.min.js"></script>
-    <script src="script.js"></script>
-  </body>
-</html>
-```
-
-2. `script.js`
-
-```javascript
 // Constants for dice faces mapping - [Top, Bottom, Right, Left, Front, Back]
 const DICE_FACE_MAP = [1, 6, 2, 5, 3, 4];
 
@@ -404,4 +333,3 @@ if (typeof module !== "undefined" && module.exports) {
     DICE_FACE_MAP,
   };
 }
-```
