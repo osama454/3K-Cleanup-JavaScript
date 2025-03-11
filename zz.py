@@ -1,8 +1,6 @@
-# extract_solution_test.py
-import os
 import re
 
-llm_response = open('./ideal.md', 'r').read()
+llm_response = open('./zideal.md', 'r').read()
 
 # Regular expression to match the file path and code block content
 pattern = r"`([^\n]*)`\s*\n```[^\n]*\n(.*?)```"
