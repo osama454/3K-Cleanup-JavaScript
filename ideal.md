@@ -1,6 +1,28 @@
-1. `script.js`
+1. `index.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Puzzle Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <input type="file" id="imageUpload" accept="image/*" />
 
-```javascript
+    <div id="puzzleContainer">
+      <canvas id="puzzleCanvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+```
+
+2. `script.js`
+```js
 // Define variables at module scope but don't initialize them yet
 let imageUpload, puzzleCanvas, ctx, puzzleContainer;
 let uploadedImage = null;
@@ -179,33 +201,10 @@ module.exports = {
   getPuzzlePieces: () => puzzlePieces,
   getGridSize: () => gridSize,
 };
-```
 
-2. `Index.html`
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image Puzzle Game</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <input type="file" id="imageUpload" accept="image/*" />
-
-    <div id="puzzleContainer">
-      <canvas id="puzzleCanvas"></canvas>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
-</html>
 ```
 
 3. `style.css`
-
 ```css
 #puzzleContainer {
   position: relative; /* To position puzzle pieces */
@@ -222,4 +221,6 @@ module.exports = {
   position: absolute;
   cursor: move;
 }
+
 ```
+

@@ -1,0 +1,18 @@
+```json
+{
+  "name": "node-starter",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "start": "servor --reload"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "dependencies": {
+    "servor": "^4.0.2"
+  }
+}
+
+```

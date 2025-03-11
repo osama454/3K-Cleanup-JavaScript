@@ -23,7 +23,7 @@ module.exports = {
 };
 ```
 
-Assume that the html file is:
+Assume that the body of the html file is:
 
 ```html
 <input type="file" id="imageUpload" />
