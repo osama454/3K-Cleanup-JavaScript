@@ -1,0 +1,15 @@
+#puzzleContainer {
+  position: relative; /* To position puzzle pieces */
+  width: 400px; /* Adjust as needed */
+  height: 400px; /* Adjust as needed */
+  border: 1px solid black;
+}
+
+#puzzleCanvas {
+  background-size: cover; /* For setting the background color */
+}
+
+.puzzle-piece {
+  position: absolute;
+  cursor: move;
+}
