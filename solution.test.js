@@ -21,10 +21,23 @@ function mock() {
       this.innerHTML = value;
     },
   });
+  const mockCtx = {
+    beginPath: jest.fn(),
+    arc: jest.fn(),
+    fill: jest.fn(),
+    fillStyle: "",
+    fillRect: jest.fn(),
+  };
+
+  // Mocking the getContext method of a canvas element
+  const mockCanvas = {
+    getContext: jest.fn(() => mockCtx),
+  };
+
+  // Mocking the document.createElement method to return the mock canvas
+  document.createElement = jest.fn(() => mockCanvas);
 }
 describe("Dice Game Initialization", () => {
-
-
   beforeAll(async () => {
     // Create a virtual DOM
     dom = await JSDOM.fromFile("index.html", {
