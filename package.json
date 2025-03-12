@@ -1,0 +1,21 @@
+{
+  "name": "jest-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "node solution.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "24.9.0",
+    "prompt-sync": "4.2.0",
+    "chai": "5.2.0",
+    "sinon": "19.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": []
+}

@@ -1,0 +1,69 @@
+ FAIL  ./solution.test.js
+  Sudoku Solver and Validator
+    √ should return false for a grid with zeros (1ms)
+    isSafe Function
+      √ should return true for a safe number placement (2ms)
+      √ should return false for an unsafe number placement (row conflict)
+      √ should return false for an unsafe number placement (column conflict)
+      √ should return false for an unsafe number placement (3x3 box conflict) (1ms)
+    solveSudoku Function
+      √ should solve a valid Sudoku puzzle (6ms)
+      √ should return false for an unsolvable Sudoku puzzle (5ms)
+    isValidSudoku Function
+      √ should return true for a valid completed Sudoku grid
+      √ should return true for a valid incomplete Sudoku grid (1ms)
+      √ should return false for an invalid Sudoku grid (duplicates)
+      √ should return false for a grid with negative values
+  getPossibleValues
+    √ should return possible values for an empty cell
+  applyConstraintPropagation
+    × should fill cells with only one possible value (2ms)
+  printGrid
+    × should print the grid in the correct format (3ms)
+
+  ● applyConstraintPropagation › should fill cells with only one possible value
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      224 |
+      225 |     const changed = applyConstraintPropagation(grid);
+    > 226 |     expect(changed).toBe(false);
+          |                     ^
+      227 |     expect(grid[0][2]).toBe(4);
+      228 |   });
+      229 | });
+
+      at Object.<anonymous> (solution.test.js:226:21)
+
+  ● printGrid › should print the grid in the correct format
+
+    expect(received).toBe(expected) // Object.is equality
+
+    - Expected
+    + Received
+
+    @@ -6,5 +6,6 @@
+      4 . . 8 . 3 . . 1
+      7 . . . 2 . . . 6
+      . 6 . . . . 2 8 .
+      . . . 4 1 9 . . 5
+      . . . . 8 . . 7 9
+    +
+
+      259 |       .replace(/null/g, ".");
+      260 |
+    > 261 |     expect(printGrid(grid)).toBe(expectedOutput);
+          |                             ^
+      262 |   });
+      263 | });
+
+      at Object.<anonymous> (solution.test.js:261:29)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 12 passed, 14 total
+Snapshots:   0 total
+Time:        1.978s, estimated 4s
+Ran all test suites.
