@@ -1,0 +1,16 @@
+PASS  ./solution.test.js
+  myPromiseAll
+    √ resolves with all values (4 ms)
+    √ rejects if any promise rejects (1 ms)
+    √ handles empty array (3 ms)
+    √ handles non-promise values
+    √ rejects with TypeError for non-array input
+    √ handles multiple rejections correctly
+    √ handles resolved promises after a rejection (1 ms)
+    √ handles array of mixed values (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        0.512 s, estimated 1 s
+Ran all test suites.
