@@ -1,0 +1,12 @@
+{
+  "name": "tests",
+  "license": "MIT",
+  "scripts": {
+    "start": "node solution.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
+

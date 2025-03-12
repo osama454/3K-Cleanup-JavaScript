@@ -1,0 +1,258 @@
+ FAIL  ./solution.test.js
+  Apartment Management System
+    parseCsvData
+      × should parse CSV data correctly (6 ms)
+      √ should handle empty CSV data (1 ms)
+      √ should handle CSV data with only headers (1 ms)
+    getAvailableUnitsByBuilding
+      × should return available units in a building (1 ms)
+      √ should return an empty array if no units are available
+      √ should handle a building that doesn't exist
+    getAvailableUnitsByFloor
+      × should return available units on a specific floor and building (1 ms)
+      √ should return an empty array if no units are available on that floor
+      √ should return an empty array if the building doesn't exist (1 ms)
+    filterApartmentsByPrice
+      × should filter available apartments by price range (1 ms)
+      √ should return an empty array if no apartments match the price range
+      × should handle edge cases for price range (1 ms)
+
+  ● Apartment Management System › parseCsvData › should parse CSV data correctly
+
+    assert.deepStrictEqual(received, expected)
+
+    Expected value to deeply and strictly equal to:
+      [{"area": 800, "availability": "true", "building": "A", "floor": "1", "price": 1500, "unit": "101"}, {"area": 900, "availability": "false", "building": "A", "floor": "1", "price": 1600, "unit": "102"}]
+    Received:
+      [{"area": 800, "availability": "true", "building": "A", "floor": 1, "price": 1500, "unit": 101}, {"area": 900, "availability": "false", "building": "A", "floor": 1, "price": 1600, "unit": 102}]
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Array [
+        Object {
+          "area": 800,
+          "availability": "true",
+          "building": "A",
+    -     "floor": "1",
+    +     "floor": 1,
+          "price": 1500,
+    -     "unit": "101",
+    +     "unit": 101,
+        },
+        Object {
+          "area": 900,
+          "availability": "false",
+          "building": "A",
+    -     "floor": "1",
+    +     "floor": 1,
+          "price": 1600,
+    -     "unit": "102",
+    +     "unit": 102,
+        },
+      ]
+
+      48 |       assert.equal(typeof parsedData[0].area, "number");
+      49 |       assert.equal(typeof parsedData[0].price, "number");
+    > 50 |       assert.deepStrictEqual(parsedData, expected);
+         |              ^
+      51 |     });
+      52 |
+      53 |     it("should handle empty CSV data", () => {
+
+      at Object.deepStrictEqual (solution.test.js:50:14)
+
+  ● Apartment Management System › getAvailableUnitsByBuilding › should return available units in a building
+
+    assert.deepStrictEqual(received, expected)
+
+    Expected value to deeply and strictly equal to:
+      [{"area": 800, "availability": "true", "building": "A", "floor": "1", "price": 1500, "unit": "101"}, {"area": 850, "availability": "true", "building": "A", "floor": "2", "price": 1550, "unit": "201"}, {"area": 950, "availability": "true", "building": "A", "floor": "2", "price": 1700, "unit": "202"}]
+    Received:
+      [{"area": 800, "availability": "true", "building": "A", "floor": 1, "price": 1500, "unit": 101}, {"area": 850, "availability": "true", "building": "A", "floor": 2, "price": 1550, "unit": 201}, {"area": 950, "availability": "true", "building": "A", "floor": 2, "price": 1700, "unit": 202}]
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Array [
+        Object {
+          "area": 800,
+          "availability": "true",
+          "building": "A",
+    -     "floor": "1",
+    +     "floor": 1,
+          "price": 1500,
+    -     "unit": "101",
+    +     "unit": 101,
+        },
+        Object {
+          "area": 850,
+          "availability": "true",
+          "building": "A",
+    -     "floor": "2",
+    +     "floor": 2,
+          "price": 1550,
+    -     "unit": "201",
+    +     "unit": 201,
+        },
+        Object {
+          "area": 950,
+          "availability": "true",
+          "building": "A",
+    -     "floor": "2",
+    +     "floor": 2,
+          "price": 1700,
+    -     "unit": "202",
+    +     "unit": 202,
+        },
+      ]
+
+      89 |         },
+      90 |       ];
+    > 91 |       assert.deepStrictEqual(
+         |              ^
+      92 |         getAvailableUnitsByBuilding(apartments, "A"),
+      93 |         expected
+      94 |       );
+
+      at Object.deepStrictEqual (solution.test.js:91:14)
+
+  ● Apartment Management System › getAvailableUnitsByFloor › should return available units on a specific floor and building
+
+    assert.deepStrictEqual(received, expected)
+
+    Expected value to deeply and strictly equal to:
+      [{"area": 900, "availability": "true", "building": "B", "floor": "2", "price": 1600, "unit": "201"}]
+    Received:
+      []
+
+    Difference:
+
+    - Expected
+    + Received
+
+    - Array [
+    -   Object {
+    -     "area": 900,
+    -     "availability": "true",
+    -     "building": "B",
+    -     "floor": "2",
+    -     "price": 1600,
+    -     "unit": "201",
+    -   },
+    - ]
+    + Array []
+
+      116 |         },
+      117 |       ];
+    > 118 |       assert.deepStrictEqual(
+          |              ^
+      119 |         getAvailableUnitsByFloor(apartments, "B", "2"),
+      120 |         expected
+      121 |       );
+
+      at Object.deepStrictEqual (solution.test.js:118:14)
+
+  ● Apartment Management System › filterApartmentsByPrice › should filter available apartments by price range
+
+    assert.deepStrictEqual(received, expected)
+
+    Expected value to deeply and strictly equal to:
+      [{"area": 800, "availability": "true", "building": "A", "floor": "1", "price": 1500, "unit": "101"}, {"area": 850, "availability": "true", "building": "A", "floor": "2", "price": 1550, "unit": "201"}, {"area": 750, "availability": "true", "building": "B", "floor": "1", "price": 1400, "unit": "101"}]
+    Received:
+      [{"area": 800, "availability": "true", "building": "A", "floor": 1, "price": 1500, "unit": 101}, {"area": 850, "availability": "true", "building": "A", "floor": 2, "price": 1550, "unit": 201}, {"area": 750, "availability": "true", "building": "B", "floor": 1, "price": 1400, "unit": 101}]
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Array [
+        Object {
+          "area": 800,
+          "availability": "true",
+          "building": "A",
+    -     "floor": "1",
+    +     "floor": 1,
+          "price": 1500,
+    -     "unit": "101",
+    +     "unit": 101,
+        },
+        Object {
+          "area": 850,
+          "availability": "true",
+          "building": "A",
+    -     "floor": "2",
+    +     "floor": 2,
+          "price": 1550,
+    -     "unit": "201",
+    +     "unit": 201,
+        },
+        Object {
+          "area": 750,
+          "availability": "true",
+          "building": "B",
+    -     "floor": "1",
+    +     "floor": 1,
+          "price": 1400,
+    -     "unit": "101",
+    +     "unit": 101,
+        },
+      ]
+
+      165 |         },
+      166 |       ];
+    > 167 |       assert.deepStrictEqual(
+          |              ^
+      168 |         filterApartmentsByPrice(apartments, 1400, 1550),
+      169 |         expected
+      170 |       );
+
+      at Object.deepStrictEqual (solution.test.js:167:14)
+
+  ● Apartment Management System › filterApartmentsByPrice › should handle edge cases for price range
+
+    assert.deepStrictEqual(received, expected)
+
+    Expected value to deeply and strictly equal to:
+      [{"area": 800, "availability": "true", "building": "A", "floor": "1", "price": 1500, "unit": "101"}]
+    Received:
+      [{"area": 800, "availability": "true", "building": "A", "floor": 1, "price": 1500, "unit": 101}]
+
+    Difference:
+
+    - Expected
+    + Received
+
+      Array [
+        Object {
+          "area": 800,
+          "availability": "true",
+          "building": "A",
+    -     "floor": "1",
+    +     "floor": 1,
+          "price": 1500,
+    -     "unit": "101",
+    +     "unit": 101,
+        },
+      ]
+
+      189 |         },
+      190 |       ];
+    > 191 |       assert.deepStrictEqual(
+          |              ^
+      192 |         filterApartmentsByPrice(apartments, 1500, 1500),
+      193 |         expected
+      194 |       );
+
+      at Object.deepStrictEqual (solution.test.js:191:14)
+
+Test Suites: 1 failed, 1 total
+Tests:       5 failed, 7 passed, 12 total
+Snapshots:   0 total
+Time:        0.555 s
+Ran all test suites.
