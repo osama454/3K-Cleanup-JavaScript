@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch solution.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "keywords": [],
+  "author": "Ives van Hoorne",
+  "license": "MIT",
+  "devDependencies": {
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "dependencies": {
+    "jest": "29.7.0",
+    "jsdom": "26.0.0"
+  }
+}
