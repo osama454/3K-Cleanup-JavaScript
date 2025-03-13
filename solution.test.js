@@ -1,4 +1,3 @@
-```javascript
 const { initializeGame, flipCard, getCurrentState } = require("./solution.js");
 
 // Setup a fake DOM environment if not present
@@ -250,5 +249,3 @@ describe("Memory Game", () => {
     });
   });
 });
-
-```

@@ -1,5 +1,3 @@
-`solution.js`
-```js
 const state = {
   flippedCards: [],
   matchedPairs: 0,
@@ -175,6 +173,3 @@ module.exports = {
   flipCard,
   getCurrentState: () => state,
 };
-
-```
-
