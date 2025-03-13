@@ -3,7 +3,7 @@ import re
 llm_response = open('./zideal.md', 'r').read()
 
 # Regular expression to match the file path and code block content
-pattern = r"`([^\n]*)`\s*\n```[^\n]*\n(.*?)```"
+pattern = r"```([^\n]*)\n(.*?)```"
 
 matches = re.findall(pattern, llm_response, re.DOTALL)
 
@@ -13,7 +13,7 @@ for match in matches:
     
     # Write new content to the file
     try:
-        with open(file_path, 'w') as f:
+        with open("solution."+file_path, 'w') as f:
             # Remove leading whitespace/newlines
             f.write(code_content.lstrip())
         print(f"Successfully updated {file_path}")
