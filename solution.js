@@ -1,28 +1,3 @@
-`solution.html`
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Drag and Drop Random Figures</title>
-    <style>
-      body {
-        margin: 0;
-      }
-      canvas {
-        display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <canvas id="myCanvas"></canvas>
-    <script src="./solution.js"></script>
-  </body>
-</html>
-
-```
-
-`solution.js`
-```js
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("myCanvas");
@@ -196,6 +171,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial draw
   redrawCanvas();
 });
-
-```
-

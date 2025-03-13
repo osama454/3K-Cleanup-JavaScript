@@ -1,10 +1,3 @@
-I am working on a little independent project, mostly developing with Javascript. As part of the project I need to create some random figures and be able to drag and drop every one of the figures, the idea is that every time I click on the screen a random figure (there should be at least 4 different figures to randomize) with a random color should be created (when a figure is dragged and dropped this doesn't count as a click). 
-I want an HTML file and `solution.js` file to solve this.
-
-Only code should be given, no explanations at all whatsoever!
-
-Your Code should pass all the test cases given here:
-```js
 /// <reference types="jest" />
 const { JSDOM } = require("jsdom");
 
@@ -141,5 +134,3 @@ describe("Drag and Drop Figures", () => {
     expect(figures[figures.length - 1].y).toBe(25);
   });
 });
-```
-
