@@ -1,4 +1,3 @@
-```javascript
 /// <reference types="jest" />
 
 const { JSDOM } = require("jsdom");
@@ -163,5 +162,3 @@ describe("User Interaction", () => {
     expect(fillTextSpy).not.toHaveBeenCalled();
   });
 });
-
-```
