@@ -28,7 +28,7 @@ function readAllFiles(dir) {
         "pnpm-lock.yaml",
       ];
       const ignoredDirs = ["node_modules", "__mocks__", "dist"];
-      const ignoredExtensions = [".png", ".jpg", ".mp4"];
+      const ignoredExtensions = [".png", ".jpg", ".mp4", ".mp3"];
 
       // Ignore folders starting with .
       if (path.basename(fullPath).startsWith(".")) {
@@ -53,7 +53,7 @@ function readAllFiles(dir) {
           const fileContent = fs.readFileSync(fullPath, "utf8");
           const fileExtension = path.extname(file).slice(1);
 
-          idealOutput += `${fileCounter}. \`${relativePath}\`\n`;
+          idealOutput += `\`${relativePath}\`\n`;
           idealOutput += `\`\`\`${fileExtension}\n`;
           idealOutput += `${fileContent}\n`;
           idealOutput += "```\n\n";
