@@ -19,3 +19,10 @@ for match in matches:
         print(f"Successfully updated {file_path}")
     except Exception as e:
         raise Exception(f"Error writing to {file_path}: {str(e)}")
+   
+   
+package = ''.join(open('./zpackage.md', 'r').readlines()[1:-1])
+open( './package.json', 'w' ).write(  package)
+
+test = ''.join(open('./ztest.md', 'r').readlines()[1:-1])
+open( './solution.test.js', 'w' ).write(  test)
