@@ -168,8 +168,9 @@ if (typeof document !== "undefined") {
   }
 }
 
-module.exports = {
-  initializeGame,
-  flipCard,
-  getCurrentState: () => state,
-};
+if (typeof module !== "undefined")
+  module.exports = {
+    initializeGame,
+    flipCard,
+    getCurrentState: () => state,
+  };

@@ -1,6 +1,6 @@
 I work for a company called 'logic-name' where we create games for teens. We want to make a fully testable mock-up of a new game. For this new game, we want to create a memory game of flipping cards, but this will be split into 2 groups, 4 cards at the right and 4 at the left, the purpose of the game is to select one of the left first, and after one of the right, it this match disappear that card, if not flip again. For the cards, I would like the left cards to have a light red color, the right ones light blue, 4  emojis that can be used for tens hidden under these cards, a turn counter at the bottom, and besides it the part where the emojis found display as soon as they are found.  One turn will have just 2 flips, the first one of the left first, and after one of the left, if they match, the cards disappear, if not, flip again and hide the emojis under those cards again. Please create a fully usable and testable solution on JS, and a basic HTML and CSS to be easy to test.
 
-Write the `solution.js` file only. Only code should be given, no explanations at all whatsoever!
+Write the `solution.js`, `solution.html`, and `solution.css` files only. Only code should be given, no explanations at all whatsoever!
 
 Your Code should pass all the test cases given here:
 ```js
@@ -260,9 +260,10 @@ describe("Memory Game", () => {
 
 Your code should implement:
 ```js
-module.exports = {
-  initializeGame,
-  flipCard,
-  getCurrentState: () => state,
-};
+if (typeof module !== "undefined")
+  module.exports = {
+    initializeGame,
+    flipCard,
+    getCurrentState: () => state,
+  };
 ```

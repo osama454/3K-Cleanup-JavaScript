@@ -1,3 +1,91 @@
+`solution.css`
+```css
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-template-rows: repeat(2, 100px);
+  gap: 10px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  transition: transform 0.3s ease;
+}
+
+.card span {
+  display: none;
+}
+
+.card.flipped span {
+  display: block;
+}
+
+#left-cards .card {
+  background-color: lightcoral;
+}
+
+#right-cards .card {
+  background-color: lightblue;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.hidden {
+  display: none;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#game-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+```
+
+`solution.html`
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emoji Memory Game</title>
+    <link rel="stylesheet" href="solution.css" />
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="left-cards" class="card-grid"></div>
+      <div id="right-cards" class="card-grid"></div>
+    </div>
+    <div id="game-info">
+      <p>Turns: <span id="turn-counter">0</span></p>
+      <div id="found-emojis"></div>
+    </div>
+    <script src="solution.js"></script>
+  </body>
+</html>
+
+```
+
 `solution.js`
 ```js
 const state = {
@@ -170,11 +258,12 @@ if (typeof document !== "undefined") {
   }
 }
 
-module.exports = {
-  initializeGame,
-  flipCard,
-  getCurrentState: () => state,
-};
+if (typeof module !== "undefined")
+  module.exports = {
+    initializeGame,
+    flipCard,
+    getCurrentState: () => state,
+  };
 
 ```
 
