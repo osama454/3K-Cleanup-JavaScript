@@ -187,11 +187,12 @@ let grid = [
 ];
 
 console.log("Sudoku puzzle:");
-printGrid(grid);
+
+console.log(printGrid(grid));
 
 if (solveSudoku(grid)) {
   console.log("\nSolved Sudoku:");
-  printGrid(grid);
+  console.log(printGrid(grid));
 } else {
   console.log("\nNo solution exists.");
 }
