@@ -1,0 +1,8 @@
+building,floor,unit,area,price,availability
+A,1,101,800,1500,true
+A,1,102,900,1600,false
+A,2,201,850,1550,true
+A,2,202,950,1700,true
+B,1,101,750,1400,true
+B,1,102,850,1500,false
+B,2,201,900,1600,true
