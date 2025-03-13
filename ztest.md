@@ -3,7 +3,7 @@
  * @jest-environment jsdom
  */
 
-import { SpeechGame } from "./speechGame";
+const { SpeechGame } = require("./solution");
 
 describe("SpeechGame", () => {
   let game;
@@ -147,4 +147,5 @@ describe("SpeechGame", () => {
     });
   });
 });
+
 ```

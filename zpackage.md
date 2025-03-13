@@ -3,19 +3,16 @@
   "name": "vite-starter",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "npx jest"
+    "test": "npx jest",
+    "start": "servor --reload"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.26.9",
-    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "servor": "^4.0.2",
     "vite": "^6.2.0"
   }
 }
+
 ```

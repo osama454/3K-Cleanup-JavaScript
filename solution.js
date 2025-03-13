@@ -4,28 +4,22 @@ class SpeechGame {
     this.messageElement = messageElement;
     this.scoreElement = scoreElement;
     this.score = 0;
-    this.currentShape = "";
-    this.recognition = null;
     this.isListening = false;
     this.shapes = ["circle", "square"];
+    this.currentShape = null;
+    this.recognition = null;
   }
 
   init() {
-    this.setupSpeechRecognition();
-    this.generateShape();
-    this.startListening();
-  }
-
-  setupSpeechRecognition() {
-    window.SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (window.SpeechRecognition) {
-      this.recognition = new window.SpeechRecognition();
-      this.recognition.continuous = false;
+    try {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      this.recognition = new SpeechRecognition();
+      this.recognition.continuous = true;
       this.recognition.interimResults = false;
 
       this.recognition.onresult = (event) => {
-        const spokenWord = event.results[0][0].transcript.toLowerCase();
+        const spokenWord = event.results[event.results.length - 1][0].transcript.toLowerCase().trim();
         this.handleSpeechResult(spokenWord);
       };
 
@@ -33,84 +27,74 @@ class SpeechGame {
         if (this.isListening) {
           setTimeout(() => {
             this.recognition.start();
-          }, 100);
+          }, 1000)
         }
       };
 
       this.recognition.onerror = (event) => {
-        console.error("Speech recognition error:", event.error);
-
-        if (event.error.includes("not-allowed")) {
-          alert(
-            "Microphone access is not allowed. Please enable permissions in your browser settings."
-          );
+        if (this.messageElement) {
+          this.messageElement.textContent = "Speech recognition error: " + event.error;
         }
-
-        this.messageElement.textContent =
-          "Speech recognition error. Please try again.";
       };
-    } else {
-      this.messageElement.textContent =
-        "Speech recognition not supported in this browser.";
-    }
-  }
+      this.recognition.start();
 
-  handleSpeechResult(spokenWord) {
-    console.log("Spoken word:", spokenWord);
-    console.log("Current shape:", this.currentShape);
-
-    if (spokenWord === this.currentShape) {
-      this.messageElement.textContent = "Correct!";
-      this.score++;
-      this.scoreElement.textContent = `Score: ${this.score}`;
-      this.generateShape();
-    } else {
-      this.messageElement.textContent = "Try again!";
+    } catch (error) {
+      console.error("Speech Recognition not supported:", error);
+      if (this.messageElement) {
+        this.messageElement.textContent = "Speech recognition not supported.";
+      }
     }
+
+
   }
 
   generateShape() {
     const randomIndex = Math.floor(Math.random() * this.shapes.length);
     this.currentShape = this.shapes[randomIndex];
-
     if (this.shapeElement) {
       this.shapeElement.className = "";
-      this.shapeElement.classList.add(this.currentShape);
-      this.shapeElement.style.top = `${
-        Math.random() * (window.innerHeight - 200)
-      }px`;
-      this.shapeElement.style.left = `${
-        Math.random() * (window.innerWidth - 200)
-      }px`;
+      this.shapeElement.classList.add(this.currentShape)
+      const top = Math.random() * 400 + "px";
+      const left = Math.random() * 400 + "px";
+
+      this.shapeElement.style.top = top;
+      this.shapeElement.style.left = left;
     }
+
 
     return this.currentShape;
   }
 
-  startListening() {
-    if (this.recognition) {
-      this.isListening = true;
-      this.recognition.start();
-      this.messageElement.textContent = "Listening... Say the shape name!";
+
+  handleSpeechResult(spokenWord) {
+    if (spokenWord === this.currentShape) {
+      this.score++;
+      this.messageElement.textContent = "Correct!";
+
+    } else {
+      this.messageElement.textContent = "Try again!";
     }
+    if (this.scoreElement) {
+      this.scoreElement.textContent = "Score: " + this.score;
+    }
+    this.generateShape();
+  }
+
+  startListening() {
+    this.isListening = true;
+    this.recognition.start();
   }
 
   stopListening() {
-    if (this.recognition) {
-      this.isListening = false;
-      this.recognition.stop();
-      this.messageElement.textContent = "Game paused";
-    }
+    this.isListening = false;
+    this.recognition.stop();
   }
 
   reset() {
     this.score = 0;
-    this.scoreElement.textContent = "Score: 0";
+    this.scoreElement.textContent = "Score: " + this.score;
     this.messageElement.textContent = "";
     this.generateShape();
-    if (this.isListening) {
-      this.stopListening();
-    }
   }
 }
 
